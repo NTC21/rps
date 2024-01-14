@@ -19,9 +19,8 @@ function getComputerChoice(){
 
 }
 
-playerwin = 0;
-computerwin = 0;
-tie = 0;
+let playerscore = 0;
+let computerscore = 0;
 
 const container = document.querySelector('#container');
 
@@ -39,10 +38,10 @@ btns.forEach((btn) => {
     if ((playerSelection2 === "scissors" && computerSelection === "paper")||
         (playerSelection2 === "paper" && computerSelection === "rock")||
         (playerSelection2 === "rock" && computerSelection === "scissors")){
-        playerwin +=1
+        playerscore +=0;
         console.log(`You Win! ${playerSelection2} beats ${computerSelection}`);
         const content1 = document.createElement('div');
-        content1.textContent = `You Win! ${playerSelection2} beats ${computerSelection}`;
+        content1.textContent = `You Win This Round! ${playerSelection2} beats ${computerSelection}`;
         container.appendChild(content1);
 
 
@@ -52,10 +51,10 @@ btns.forEach((btn) => {
     if ((playerSelection2 === "scissors" && computerSelection === "rock")||
         (playerSelection2 === "paper" && computerSelection === "scissors")||
         (playerSelection2 === "rock" && computerSelection === "paper")){
-        computerwin+=1
+        computerscore+=1;
         console.log(`You Lose! ${computerSelection} beats ${playerSelection2}`);
         const content2 = document.createElement('div');
-        content2.textContent = `You Lose! ${computerSelection} beats ${playerSelection2}`;
+        content2.textContent = `You Lose This Round! ${computerSelection} beats ${playerSelection2}`;
         container.appendChild(content2);
 
     }
@@ -64,12 +63,29 @@ btns.forEach((btn) => {
     if ((playerSelection2 === "scissors" && computerSelection === "scissors")||
         (playerSelection2 === "paper" && computerSelection === "paper")||
         (playerSelection2 === "rock" && computerSelection === "rock")){
-        tie +=1;
         console.log(`Tie. Redo`);
         const content3 = document.createElement('div');
-        content3.textContent = `Tie. Redo`;
+        content3.textContent = `Tie this Round. Redo`;
         container.appendChild(content3);
 
+    }
+
+    if (playerscore === 5){
+        console.log(`PLAYER WINS GAME`);
+        const content4 = document.createElement('h2');
+        content4.textContent = `PLAYER WINS GAME`;
+        container.appendChild(content4);
+        playerscore = 0;
+        computerscore = 0;
+    }
+
+    if (computerscore === 5){
+        console.log(`COMPUTER WINS GAME`);
+        const content5 = document.createElement('h2');
+        content5.textContent = `COMPUTER WINS GAME`;
+        container.appendChild(content5);
+        computerscore = 0;
+        playerscore = 0;
     }
 
     });
